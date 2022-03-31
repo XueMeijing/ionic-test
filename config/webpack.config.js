@@ -535,30 +535,7 @@ module.exports = function (webpackEnv) {
                 'sass-loader'
               ),
             },
-            {
-              test: lessRegex,
-              exclude: lessModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                },
-                'less-loader'
-              ),
-              sideEffects: true,
-            },
-            {
-              test: lessModuleRegex,
-              use: getStyleLoaders(
-                {
-                    importLoaders: 2,
-                    sourceMap: isEnvProduction && shouldUseSourceMap,
-                    modules: true,
-                    getLocalIdent: getCSSModuleLocalIdent,
-                },
-                'less-loader'
-              )
-            },
+           
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
@@ -609,7 +586,7 @@ module.exports = function (webpackEnv) {
         )
       ),
       new webpack.optimize.LimitChunkCountPlugin({
-        maxChunks: 3, // 必须大于或等于 1
+        maxChunks: 3, 
         minChunkSize: 1000
       }),
       // Inlines the webpack runtime script. This script is too small to warrant
